@@ -12,7 +12,7 @@ students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 
 # calculate average values of students' grades
 # using [x for x in iterable] list datatype's construction method
-grades  = [sum(x)/len(x) for x in grades]
+grades = [sum(x)/len(x) for x in grades]
 
 # make students an ordered collection
 students = list(students)
