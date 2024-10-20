@@ -1,5 +1,4 @@
 # initial data
-
 # list of students' grade lists,
 # sorted in alphabetical order by students' names
 grades = [[5, 3, 3, 5, 4],
