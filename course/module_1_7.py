@@ -9,13 +9,8 @@ grades = [[5, 3, 3, 5, 4],
 # students' names
 students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 
-# make students an ordered collection
-students = list(students)
-# sort students using list datatype's sort() method
-students.sort()
-
 # calculate average values of students' grades
 #   using [x for x in iterable] list datatype's construction method
 # print a mapping of the students to their average grades
 #   using type class'es zip() transposing method
-print(dict(zip(students, [sum(x)/len(x) for x in grades])))
+print(dict(zip(sorted(list(students)), [sum(x)/len(x) for x in grades])))
