@@ -9,6 +9,12 @@ grades = [[5, 3, 3, 5, 4],
 # students' names
 students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 
+# for latest python versions, where sets are ordered collections
+# print(dict(zip([x for x in students], [sum(x)/len(x) for x in grades])))
+# end of program
+
+# for older python versions
+
 # calculate average values of students' grades
 # using [x for x in iterable] list datatype's construction method
 grades = [sum(x)/len(x) for x in grades]
