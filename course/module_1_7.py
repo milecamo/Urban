@@ -11,4 +11,5 @@ students = {'Johnny', 'Bilbo', 'Steve', 'Khendrik', 'Aaron'}
 
 # print a mapping of the students to their average grades
 # using type class'es zip() transposing method
-print(dict(zip(sorted(list(students)), (sum(x)/len(x) for x in grades))))
+print(dict(zip( sorted(list(students)),
+                (sum(x)/len(x) for x in grades) )))
