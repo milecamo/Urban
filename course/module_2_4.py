@@ -8,7 +8,7 @@ for i in numbers:
     is_prime = True
     if i > 2:
         for j in range(2, i):
-            if i % j == 0:
+            if not i % j:
                 is_prime = False
                 break
     if i > 1:
