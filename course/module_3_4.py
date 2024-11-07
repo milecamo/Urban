@@ -2,10 +2,10 @@
 
 def single_root_words(root_word, *other_words):
     same_words = []
-    root_word = root_word.lower() # !!!!! MAKE IT LOWER
+    low_root_word = root_word.lower() # !!!!! MAKE IT LOWER
     for word in other_words:
         low_word = word.lower()
-        if low_word in root_word or root_word in low_word:
+        if low_word in low_root_word or low_root_word in low_word:
             same_words.append(word)
     return same_words
 
