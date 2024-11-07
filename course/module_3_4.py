@@ -2,7 +2,7 @@
 
 def single_root_words(root_word, *other_words):
     same_words = []
-    root_word = root_word.lower()
+    root_word = root_word.lower() # !!!!! MAKE IT LOWER
     for word in other_words:
         low_word = word.lower()
         if low_word in root_word or root_word in low_word:
