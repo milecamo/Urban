@@ -16,7 +16,7 @@ def add_str(str):
     if res_str:
         res_str += f'+{str}'
     else:
-        res_str += f'{str}'
+        res_str = f'{str}'
 
 
 def calculate_structure_sum(*args):
