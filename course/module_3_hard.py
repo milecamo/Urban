@@ -13,10 +13,10 @@ res_str = ""
 
 def add_str(str):
     global res_str
-    if not res_str:
-        res_str = f'{str}'
-    else:
+    if res_str:
         res_str += f'+{str}'
+    else:
+        res_str += f'{str}'
 
 
 def calculate_structure_sum(*args):
