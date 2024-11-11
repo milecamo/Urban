@@ -14,9 +14,9 @@ res_str = ""
 def add_str(str):
     global res_str
     if res_str:
-        res_str += f'+{str}'
+        res_str += '+' + str
     else:
-        res_str = f'{str}'
+        res_str = str
 
 
 def calculate_structure_sum(*args):
@@ -24,7 +24,7 @@ def calculate_structure_sum(*args):
     for i in args:
         if isinstance(i, int):
             result += i
-            add_str(i)
+            add_str(str(i))
         elif isinstance(i, str):
             result += len(i)
             add_str(f"len('{i}')")
