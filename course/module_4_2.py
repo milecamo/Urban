@@ -1,4 +1,4 @@
-# "Пространство имен
+# "Пространство имен"
 
 def test_function():
     def inner_function():
