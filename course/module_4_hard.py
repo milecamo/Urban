@@ -29,7 +29,7 @@ def print_profit(prices, should_be):
 
 print_profit((7, 1, 5, 3, 6, 4), 5)
 print_profit((7, 6, 4, 3, 1), 0)
-print_profit((7,8), 1)
+print_profit((7, 8), 1)
 print_profit((7,), 0)
 print_profit((), 0)
 print(f'Maximum profit for empty stock prices is {profit()[0]}')
