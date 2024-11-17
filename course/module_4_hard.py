@@ -21,10 +21,10 @@ def print_profit(prices, should_be):
     prft, buy_on, sell_on = profit(*prices)
     if prft:
         print(f'Maximum profit for stock prices {prices} is {prft}', prft == should_be,
-              f'Buy on day {buy_on}, sell on day {sell_on}')
+              f'The best time to buy was on day {buy_on}, and to sell on day {sell_on}')
     else:
         print(f'Maximum profit for stock prices {prices} is {prft}', prft == should_be,
-              "Don't buy")
+              "In this case, the best choice was not to make any transactions")
 
 
 print_profit((7, 1, 5, 3, 6, 4), 5)
