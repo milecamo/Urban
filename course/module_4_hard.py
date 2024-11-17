@@ -5,16 +5,16 @@ def profit(*prices):
     profits = [0]
     for i in range(len(prices) - 1):
         profit = max(prices[i + 1:len(prices)]) - prices[i]
-        if not profit > 0:
+        if profit < 0:
             profit = 0
         profits.append(profit)
-    prft = max(profits)
-    buy_on = -1
-    sell_on = -1
-    if prft:
-        buy_on = profits.index(prft)
-        sell_on = prices.index(prices[buy_on - 1] + prft, buy_on) + 1
-    return prft, buy_on, sell_on
+    profit = max(profits)
+    buy_on = 0
+    sell_on = 0
+    if profit:
+        buy_on = profits.index(profit)
+        sell_on = prices.index(prices[buy_on - 1] + profit, buy_on) + 1
+    return profit, buy_on, sell_on
 
 
 def print_profit(prices, should_be):
