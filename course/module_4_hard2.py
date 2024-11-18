@@ -51,9 +51,9 @@ def print_profit(prices, should_be, should_buy_on=None, should_sell_on=None):
     print(f'Maximum profit for stock prices {prices} was {profit} ', qa_result)
     if profit:
         for i in range(len(buy_on)):
-            beg_str = "Then the"
-            if not i:
-                beg_str = "The"
+            beg_str = "The"
+            if i:
+                beg_str = "Then the"
             print(beg_str,
                   f'best time to buy was on day {buy_on[i]} (price = {prices[buy_on[i] - 1]}),')
             print(f'and to sell on day {sell_on[i]} (price = {prices[sell_on[i] - 1]}), '
