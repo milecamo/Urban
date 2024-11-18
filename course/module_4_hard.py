@@ -17,13 +17,15 @@ def profit(*prices):
 def print_profit(prices, should_be, should_buy_on=-1, should_sell_on=-1):
     result = max_profit, buy_on, sell_on = profit(*prices)
     QA_result = result == (should_be, should_buy_on, should_sell_on)
-    res_str = f'Profit for stock prices {prices} was {max_profit} '
+    print(f'Profit for stock prices {prices} was {max_profit} ', QA_result)
     if max_profit:
-        print(res_str, QA_result,
-              f' The best time to buy was on day {buy_on}, and to sell on day {sell_on}')
+        print(f'The best time to buy was on day {buy_on} (price = {prices[buy_on - 1]}),')
+        print(f'and to sell on day {sell_on} (price = {prices[sell_on - 1]}), '
+              f'profit = {prices[sell_on - 1]}-{prices[buy_on - 1]} = '
+              f'{prices[sell_on - 1] - prices[buy_on - 1]}')
     else:
-        print(res_str, QA_result,
-              ' In this case, the best choice was not to make any transactions')
+        print('In this case, the best choice was not to make any transactions')
+    print()
 
 
 print_profit((7, 1, 5, 3, 6, 4), 5, 2, 5)
