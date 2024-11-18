@@ -4,11 +4,13 @@
 def profit(*prices):
     profits = [0]
     for i in range(len(prices) - 1):
+        # not recursive
         profit = max(prices[i + 1:len(prices)]) - prices[i]
         if profit < 0:
             profit = 0
         profits.append(profit)
-    profit = max(profits) # not recursive
+    # not recursive
+    profit = max(profits)
     buy_on = 0
     sell_on = 0
     if profit:
