@@ -4,10 +4,7 @@
 def max_profit(*prices):
     profits = [0]
     for i in range(len(prices) - 1):
-        profit = max(prices[i + 1:len(prices)]) - prices[i]
-        if profit < 0:
-            profit = 0
-        profits.append(profit)
+        profits.append(max(prices[i + 1:len(prices)]) - prices[i])
     # not recursive
     max_profit = max(profits)
     buy_on = -1
@@ -26,13 +23,14 @@ def print_profit(prices, should_be, should_buy_on=-1, should_sell_on=-1):
               f'The best time to buy was on day {buy_on}, and to sell on day {sell_on}')
     else:
         print(f'Maximum profit for stock prices {prices} is {profit}',
-              profit == should_be,
+              result == (should_be, should_buy_on, should_sell_on),
               "In this case, the best choice was not to make any transactions")
 
 
 print_profit((7, 1, 5, 3, 6, 4), 5, 2, 5)
 print_profit((7, 6, 4, 3, 1), 0)
 print_profit((7, 8), 1, 1, 2)
+print_profit((8, 7), 0)
 print_profit((7,), 0)
 print_profit((), 0)
 print(f'Maximum profit for empty stock prices is {max_profit()[0]}')
