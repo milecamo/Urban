@@ -17,13 +17,13 @@ def max_profit(*prices):
 
 def print_profit(prices, should_be, should_buy_on=-1, should_sell_on=-1):
     result = profit, buy_on, sell_on = max_profit(*prices)
+    check_result = result == (should_be, should_buy_on, should_sell_on)
+    res_str = f'Maximum profit for stock prices {prices} is {profit}'
     if profit:
-        print(f'Maximum profit for stock prices {prices} is {profit}',
-              result == (should_be, should_buy_on, should_sell_on),
+        print(res_str, check_result,
               f'The best time to buy was on day {buy_on}, and to sell on day {sell_on}')
     else:
-        print(f'Maximum profit for stock prices {prices} is {profit}',
-              result == (should_be, should_buy_on, should_sell_on),
+        print(res_str, check_result,
               "In this case, the best choice was not to make any transactions")
 
 
