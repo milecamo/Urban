@@ -58,6 +58,7 @@ def print_profit(prices, should_be, should_buy_on=None, should_sell_on=None):
                   f'best time to buy was on day {buy_on[i]}, and to sell on day {sell_on[i]}')
     else:
         print('In this case, the best choice was not to make any transactions')
+    print()
 
 
 print_profit((7, 1, 5, 3, 6, 4), 7, [2,4], [3,5])
