@@ -13,3 +13,5 @@ inner_function()
 # !!!
 # Please see module_4_hard.py Best Time to Buy and Sell Stock
 # https://github.com/milecamo/Urban/blob/master/course/module_4_hard.py
+# And module_4_hard2.py Best Time to Buy and Sell Stock II
+# https://github.com/milecamo/Urban/blob/master/course/module_4_hard2.py
