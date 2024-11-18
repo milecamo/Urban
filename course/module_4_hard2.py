@@ -24,14 +24,14 @@ def max_profit(*prices):
         up_day = up_trend(prices, index)
         if up_day:
             buy_on.append(up_day)
-            down_day = down_trend(prices, up_day-1)
+            down_day = down_trend(prices, up_day - 1)
             if down_day:
                 sell_on.append(down_day)
-                profit += prices[down_day-1] - prices[up_day-1]
+                profit += prices[down_day - 1] - prices[up_day - 1]
                 index = down_day
             else:
                 sell_on.append(len(prices))
-                profit += prices[len(prices)-1] - prices[up_day-1]
+                profit += prices[len(prices) - 1] - prices[up_day - 1]
                 index = len(prices)
         else:
             index = len(prices)
@@ -61,7 +61,7 @@ def print_profit(prices, should_be, should_buy_on=None, should_sell_on=None):
     print()
 
 
-print_profit((7, 1, 5, 3, 6, 4), 7, [2,4], [3,5])
+print_profit((7, 1, 5, 3, 6, 4), 7, [2, 4], [3, 5])
 print_profit((1, 2, 3, 4, 5), 4, [1], [5])
 print_profit((7, 6, 4, 3, 1), 0)
 print_profit((7, 8), 1, [1], [2])
