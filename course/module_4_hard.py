@@ -5,7 +5,6 @@ def profit(*prices):
     profits = [0]
     for i in range(len(prices) - 1):
         profits.append(max(prices[i + 1:len(prices)]) - prices[i])
-    # not recursive
     max_profit = max(profits)
     buy_on = -1
     sell_on = -1
