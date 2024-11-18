@@ -16,8 +16,8 @@ def profit(*prices):
 
 def print_profit(prices, should_be, should_buy_on=-1, should_sell_on=-1):
     result = max_profit, buy_on, sell_on = profit(*prices)
-    QA_result = result == (should_be, should_buy_on, should_sell_on)
-    print(f'Profit for stock prices {prices} was {max_profit} ', QA_result)
+    qa_result = result == (should_be, should_buy_on, should_sell_on)
+    print(f'Profit for stock prices {prices} was {max_profit} ', qa_result)
     if max_profit:
         print(f'The best time to buy was on day {buy_on} (price = {prices[buy_on - 1]}),')
         print(f'and to sell on day {sell_on} (price = {prices[sell_on - 1]}), '
