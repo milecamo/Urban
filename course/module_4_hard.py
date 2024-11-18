@@ -8,7 +8,7 @@ def profit(*prices):
         if profit < 0:
             profit = 0
         profits.append(profit)
-    profit = max(profits)
+    profit = max(profits) # not recursive
     buy_on = 0
     sell_on = 0
     if profit:
