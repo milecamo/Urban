@@ -37,4 +37,3 @@ print(f'Profit for empty stock prices was {profit()[0]}')
 # !!!
 # And module_4_hard2.py Best Time to Buy and Sell Stock II
 # https://github.com/milecamo/Urban/blob/master/course/module_4_hard2.py
-
