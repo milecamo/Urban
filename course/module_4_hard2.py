@@ -55,10 +55,10 @@ def print_profit(prices, should_be, should_buy_on=None, should_sell_on=None):
             if not i:
                 beg_str = "The"
             print(beg_str,
-                  f'best time to buy was on day {buy_on[i]} (price = {prices[buy_on[i]-1]}), '
-                  f'and to sell on day {sell_on[i]} (price = {prices[sell_on[i]-1]}), '
-                  f'profit = {prices[sell_on[i]-1]}-{prices[buy_on[i]-1]} = '
-                  f'{prices[sell_on[i]-1]-prices[buy_on[i]-1]}')
+                  f'best time to buy was on day {buy_on[i]} (price = {prices[buy_on[i] - 1]}), '
+                  f'and to sell on day {sell_on[i]} (price = {prices[sell_on[i] - 1]}), '
+                  f'profit = {prices[sell_on[i] - 1]}-{prices[buy_on[i] - 1]} = '
+                  f'{prices[sell_on[i] - 1] - prices[buy_on[i] - 1]}')
     else:
         print('In this case, the best choice was not to make any transactions')
     print()
