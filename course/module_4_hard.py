@@ -1,7 +1,7 @@
 # Best Time to Buy and Sell Stock
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 
-def max_profit(*prices):
+def profit(*prices):
     profits = [0]
     for i in range(len(prices) - 1):
         profits.append(max(prices[i + 1:len(prices)]) - prices[i])
@@ -16,9 +16,9 @@ def max_profit(*prices):
 
 
 def print_profit(prices, should_be, should_buy_on=-1, should_sell_on=-1):
-    result = profit, buy_on, sell_on = max_profit(*prices)
+    result = max_profit, buy_on, sell_on = profit(*prices)
     QA_result = result == (should_be, should_buy_on, should_sell_on)
-    res_str = f'Maximum profit for stock prices {prices} is {profit} '
+    res_str = f'Profit for stock prices {prices} is {max_profit} '
     if profit:
         print(res_str, QA_result,
               f' The best time to buy was on day {buy_on}, and to sell on day {sell_on}')
@@ -33,4 +33,4 @@ print_profit((7, 8), 1, 1, 2)
 print_profit((8, 7), 0)
 print_profit((7,), 0)
 print_profit((), 0)
-print(f'Maximum profit for empty stock prices is {max_profit()[0]}')
+print(f'Maximum profit for empty stock prices is {profit()[0]}')
