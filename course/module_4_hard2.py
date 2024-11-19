@@ -15,7 +15,7 @@ def down_trend(prices, StartIndex):
     return 0
 
 
-def max_profit(*prices):
+def max_profit(prices):
     profit = 0
     index = 0
     buy_on = []
@@ -40,7 +40,7 @@ def print_profit(prices, should_be, should_buy_on=None, should_sell_on=None):
         should_buy_on = []
     if not should_sell_on:
         should_sell_on = []
-    profit, buy_on, sell_on = max_profit(*prices)
+    profit, buy_on, sell_on = max_profit(prices)
     print(f'Maximum profit for stock prices {prices} was {profit} ',
           (profit, buy_on, sell_on) == (should_be, should_buy_on, should_sell_on))
     if profit:
@@ -64,5 +64,3 @@ print_profit((7, 6, 4, 3, 1), 0)
 print_profit((7, 8), 1, [1], [2])
 print_profit((8, 7), 0)
 print_profit((7,), 0)
-print_profit((), 0)
-print(f'Maximum profit for empty stock prices was {max_profit()[0]}')
