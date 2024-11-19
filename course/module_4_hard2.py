@@ -24,7 +24,7 @@ def max_profit(prices):
         up_day = up_trend(prices, index)
         if up_day:
             buy_on.append(up_day)
-            index = down_trend(prices, up_day - 1)
+            index = down_trend(prices, up_day)
             if not index:
                 index = len(prices)
             sell_on.append(index)
