@@ -12,8 +12,8 @@ def make_trender(comparison):
     return lambda prices, StartIndex: trend(prices, comparison, StartIndex)
 
 
-up_trend = make_trender(lambda x, y: x > y)
-down_trend = make_trender(lambda x, y: x < y)
+up_trend = make_trender(lambda next_price, past_price: next_price > past_price)
+down_trend = make_trender(lambda next_price, past_price: next_price < past_price)
 
 
 def max_profit(prices):
@@ -32,6 +32,7 @@ def max_profit(prices):
             profit += prices[index] - prices[up_day]
             index += 1
         else:
+            # not shorting yet :( but  not longing either already :)))
             break
 
     return profit, buy_on, sell_on
