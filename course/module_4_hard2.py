@@ -1,38 +1,38 @@
 # Best Time to Buy and Sell Stock II
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii
 
-def trend(prices, comparison, StartIndex):
-    for i in range(StartIndex, len(prices) - 1):
-        if comparison(prices[i + 1], prices[i]):
+def signal(prices, metric, StartTime):
+    for i in range(StartTime, len(prices) - 1):
+        if metric(prices[i + 1], prices[i]):
             return i
     return -1
 
 
-def make_trender(comparison):
-    return lambda prices, StartIndex: trend(prices, comparison, StartIndex)
+def make_signaller(metric):
+    return lambda prices, StartTime: signal(prices, metric, StartTime)
 
 
-up_trend = make_trender(lambda next_price, past_price: next_price > past_price)
-down_trend = make_trender(lambda next_price, past_price: next_price < past_price)
+up_trend_signal = make_signaller(lambda next_price, past_price: next_price > past_price)
+down_trend_signal = make_signaller(lambda next_price, past_price: next_price < past_price)
 
 
 def max_profit(prices):
     profit = 0
-    index = 0
+    current_day = 0
     buy_on = []
     sell_on = []
-    while index < len(prices) - 1:
-        up_day = up_trend(prices, index)
-        if up_day >= 0:
-            buy_on.append(up_day)
-            index = down_trend(prices, up_day + 1)
-            if index < 0:
-                index = len(prices) - 1
-            sell_on.append(index)
-            profit += prices[index] - prices[up_day]
-            index += 1
+    while current_day < len(prices) - 1:
+        buy_day = up_trend_signal(prices, current_day)
+        if buy_day >= 0:
+            buy_on.append(buy_day)
+            current_day = down_trend_signal(prices, buy_day + 1)
+            if current_day < 0:
+                current_day = len(prices) - 1
+            sell_on.append(current_day)
+            profit += prices[current_day] - prices[buy_day]
+            current_day += 1
         else:
-            # not shorting yet :( but  not longing either already :)))
+            # not shorting yet :( but not longing either already :)))
             break
 
     return profit, buy_on, sell_on
