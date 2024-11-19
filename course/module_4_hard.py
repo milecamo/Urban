@@ -2,14 +2,15 @@
 # https://leetcode.com/problems/best-time-to-buy-and-sell-stock
 
 def profit(prices):
-    profits = [0]
+    profits = []
     for i in range(len(prices) - 1):
         profits.append(max(prices[i + 1:len(prices)]) - prices[i])
+    profits.append(0)
     max_profit = max(profits)
     buy_on = -1
     sell_on = -1
     if max_profit:
-        buy_on = profits.index(max_profit) - 1
+        buy_on = profits.index(max_profit)
         sell_on = prices.index(prices[buy_on] + max_profit, buy_on)
     return max_profit, buy_on, sell_on
 
