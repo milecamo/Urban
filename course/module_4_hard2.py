@@ -21,7 +21,7 @@ def max_profit(prices):
     index = 0
     buy_on = []
     sell_on = []
-    while index < len(prices):
+    while index < len(prices) - 1:
         up_day = up_trend(prices, index)
         if up_day >= 0:
             buy_on.append(up_day)
@@ -65,5 +65,7 @@ print_profit((7, 1, 5, 3, 6, 4), 7, [1, 3], [2, 4])
 print_profit((1, 2, 3, 4, 5), 4, [0], [4])
 print_profit((7, 6, 4, 3, 1), 0)
 print_profit((7, 8), 1, [0], [1])
+print_profit((7, 8, 7, 8), 2, [0, 2], [1, 3])
+print_profit((7, 8, 7, 8, 7), 2, [0, 2], [1, 3])
 print_profit((8, 7), 0)
 print_profit((7,), 0)
