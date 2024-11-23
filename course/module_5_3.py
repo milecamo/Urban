@@ -2,10 +2,10 @@
 
 class House:
     def __init__(self, name, number_of_floors):
-        self.name = 'Неверное имя'
+        self.name = None
         if isinstance(name, str):
             self.name = name
-        self.number_of_floors = 0
+        self.number_of_floors = None
         if isinstance(number_of_floors, int):
             self.number_of_floors = number_of_floors
 
@@ -26,37 +26,38 @@ class House:
     def __eq__(self, other):
         if isinstance(other, House):
             return self.number_of_floors == other.number_of_floors
-        return False
+        return NotImplemented
 
     def __lt__(self, other):
         if isinstance(other, House):
             return self.number_of_floors < other.number_of_floors
-        return False
+        return NotImplemented
 
     def __le__(self, other):
         if isinstance(other, House):
             return self.number_of_floors <= other.number_of_floors
-        return False
+        return NotImplemented
 
     def __gt__(self, other):
         if isinstance(other, House):
             return self.number_of_floors > other.number_of_floors
-        return False
+        return NotImplemented
 
     def __ge__(self, other):
         if isinstance(other, House):
             return self.number_of_floors >= other.number_of_floors
-        return False
+        return NotImplemented
 
     def __ne__(self, other):
         if isinstance(other, House):
             return self.number_of_floors != other.number_of_floors
-        return True
+        return NotImplemented
 
     def __add__(self, value):
         if isinstance(value, int):
             self.number_of_floors += value
-        return self
+            return self
+        return NotImplemented
 
     def __radd__(self, value):
         return self.__add__(value)
