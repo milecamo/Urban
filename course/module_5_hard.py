@@ -36,8 +36,8 @@ class Video:
         return NotImplemented
 
     def show(self):
-        for self.time_now in range(self.time_now + 1, self.duration + 1):
-            print(self.time_now, end=" ")
+        for self.time_now in range(self.time_now, self.duration):
+            print(self.time_now + 1, end=" ")
             time.sleep(1)
         self.time_now = 0
         print("Конец видео")
