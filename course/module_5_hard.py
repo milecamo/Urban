@@ -37,8 +37,8 @@ class Video:
 
     def show(self):
         for i in range(self.time_now + 1, self.duration + 1):
-            print(i, end=" ")
             self.time_now = i
+            print(self.time_now, end=" ")
             time.sleep(1)
         self.time_now = 0
         print("Конец видео")
