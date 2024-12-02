@@ -10,8 +10,8 @@ class User:
         self.age = age
 
     def __eq__(self, other):
-        if isinstance(other, User):
-            return self.nickname == other.nickname
+        if isinstance(other, str):
+            return self.nickname == other
         return NotImplemented
 
     def __str__(self):
@@ -58,10 +58,9 @@ class UrTube:
                 break
 
     def register(self, nickname, password, age):
-        current_user = User(nickname, password, age)
-        if not current_user in self.users:
-            self.users.append(current_user)
-            self.current_user = current_user
+        if not nickname in self.users:
+            self.current_user = User(nickname, password, age)
+            self.users.append(self.current_user)
         else:
             print(f"Пользователь {nickname} уже существует")
 
