@@ -52,7 +52,7 @@ class UrTube:
     def log_in(self, nickname, password):
         for user in self.users:
             hashed = hash(password)
-            if user.nickname == nickname and user.password == hashed:
+            if user == nickname and user.password == hashed:
                 self.current_user = user
                 break
 
