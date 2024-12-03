@@ -50,9 +50,9 @@ class UrTube:
         self.current_user = None
 
     def log_in(self, nickname, password):
+        hashed_pswrd = hash(password)
         for user in self.users:
-            hashed = hash(password)
-            if user == nickname and user.password == hashed:
+            if user == nickname and user.password == hashed_pswrd:
                 self.current_user = user
                 break
 
@@ -68,7 +68,7 @@ class UrTube:
 
     def add(self, *args):
         for video in args:
-            if not video in self.videos:
+            if isinstance(video, Video) and not video in self.videos:
                 self.videos.append(video)
 
     def get_videos(self, find_str):
