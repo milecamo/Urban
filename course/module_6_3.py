@@ -19,7 +19,8 @@ class Animal:
         self._cords = list(map(lambda x: x * self.speed, (dx, dy, dz)))
 
     def get_cords(self):
-        print(f'X: {self._cords[0]}, Y: {self._cords[1]}, Z: {self._cords[2]}')
+        # print(f'X: {self._cords[0]}, Y: {self._cords[1]}, Z: {self._cords[2]}')
+        print(', '.join(f'{x[0]}: {x[1]}' for x in zip(('X','Y','Z'), self._cords)))
 
     def attack(self):
         if self._DEGREE_OF_DANGER < 5:
