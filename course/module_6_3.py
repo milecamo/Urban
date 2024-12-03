@@ -16,11 +16,12 @@ class Animal:
         if self._cords[2] < 0:
             print("It's too deep, i can't dive :(")
             return
-        self._cords = list(map(lambda x: x * self.speed, (dx, dy, dz)))
+        self._cords = list(map(lambda cord_val: cord_val * self.speed, (dx, dy, dz)))
 
     def get_cords(self):
-        # print(f'X: {self._cords[0]}, Y: {self._cords[1]}, Z: {self._cords[2]}')
-        print(', '.join(f'{x[0]}: {x[1]}' for x in zip(('X','Y','Z'), self._cords)))
+        # print(', '.join(f'{x[0]}: {x[1]}' for x in zip(('X','Y','Z'), self._cords)))
+        # more readable and efficient
+        print(f'X: {self._cords[0]}, Y: {self._cords[1]}, Z: {self._cords[2]}')
 
     def attack(self):
         if self._DEGREE_OF_DANGER < 5:
