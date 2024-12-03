@@ -52,9 +52,10 @@ class UrTube:
     def log_in(self, nickname, password):
         hashed_pswrd = hash(password)
         for user in self.users:
-            if user == nickname and user.password == hashed_pswrd:
-                self.current_user = user
-                break
+            if user == nickname:
+                if user.password == hashed_pswrd:
+                    self.current_user = user
+                return
 
     def register(self, nickname, password, age):
         if not nickname in self.users:
@@ -88,7 +89,7 @@ class UrTube:
                         print("Вам нет 18 лет, пожалуйста покиньте страницу")
                         return
                     video.show()
-                    break
+                    return
 
 
 ur = UrTube()
