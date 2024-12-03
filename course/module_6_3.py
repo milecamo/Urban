@@ -16,7 +16,7 @@ class Animal:
         if self._cords[2] < 0:
             print("It's too deep, i can't dive :(")
             return
-        self._cords = list(map(lambda cord_val: cord_val * self.speed, (dx, dy, dz)))
+        self._cords = list(map(lambda cord_val: self.speed * cord_val, (dx, dy, dz)))
 
     def get_cords(self):
         # print(', '.join(f'{x[0]}: {x[1]}' for x in zip(('X','Y','Z'), self._cords)))
