@@ -35,6 +35,7 @@ class Figure:
     def __is_valid_sides(self, *sides):
         if len(sides) != self.sides_count:
             return False
+
         for side in sides:
             if not isinstance(side, int) or side <= 0:
                 return False
@@ -51,7 +52,8 @@ class Figure:
 
     def set_sides(self, *new_sides):
         if self.__is_valid_sides(*new_sides):
-            self.__sides = list(new_sides).copy()
+            self.__sides = list(new_sides)
+
         if not self.__sides:
             self.__sides = []
             for i in range(self.sides_count):
@@ -66,8 +68,12 @@ class Circle(Figure):
         super().__init__(color, *sides)
 
     def set_sides(self, *new_sides):
+        old_side = 0 if not self.__radius else self.get_sides()[0]
+
         super().set_sides(*new_sides)
-        self.__radius = self.get_sides()[0] / 2 / pi
+
+        if old_side != self.get_sides()[0]:
+            self.__radius = self.get_sides()[0] / 2 / pi
 
     def get_square(self):
         return self.get_sides()[0] ** 2 / 4 / pi
@@ -96,6 +102,7 @@ class Cube(Figure):
         sides = self.get_sides()
         for i in range(self.sides_count - 1):
             sides.append(sides[0])
+
         super().set_sides(*sides)
 
     def get_volume(self):
@@ -141,9 +148,10 @@ print(len(cube1))  # 72
 print(round(circle1.get_radius(), 2))  # 2.39
 print(round(circle1.get_square(), 2))  # 17.9
 
-triangle1 = Triangle((), 3, 4, 5)
+# triangle1 = Triangle((), 3, 4, 5)
+triangle1 = Triangle(1)
 
 # Проверка площади (треугольника)
-print(triangle1.get_square())  # 6.0
+print(round(triangle1.get_square(), 2))  # 0.43
 # Проверка цветов:
 print(triangle1.get_color())  # [255, 255, 255]
