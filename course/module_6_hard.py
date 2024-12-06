@@ -1,7 +1,6 @@
 # Задание "Они все так похожи"
 
-from math import pi
-from math import sqrt
+from math import pi, sqrt
 
 
 class Figure:
