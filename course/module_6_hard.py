@@ -62,8 +62,8 @@ class Circle(Figure):
     sides_count = 1
 
     def __init__(self, color, *sides):
-        super().__init__(color, *sides)
         self.__radius = 0
+        super().__init__(color, *sides)
 
     def set_sides(self, *new_sides):
         super().set_sides(*new_sides)
