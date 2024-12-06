@@ -36,7 +36,7 @@ class Figure:
         if len(sides) != self.sides_count:
             return False
         for side in sides:
-            if not isinstance(side, int) or side < 0:
+            if not isinstance(side, int) or side <= 0:
                 return False
         return True
 
@@ -117,6 +117,9 @@ circle1.set_color(55, 66, 77)  # Изменится
 print(circle1.get_color())
 cube1.set_color(300, 70, 15)  # Не изменится
 print(cube1.get_color())
+
+# Проверка радиуса
+print(round(circle1.get_radius(), 2))  # 1.59
 
 # Проверка на изменение сторон:
 cube1.set_sides(5, 3, 12, 4, 5)  # Не изменится
