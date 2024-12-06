@@ -112,14 +112,14 @@ class Cube(Figure):
 circle1 = Circle((200, 200, 100), 10)  # (Цвет, стороны)
 cube1 = Cube((222, 35, 130), 6)
 
+# Проверка радиуса (круга)
+print(round(circle1.get_radius(), 2))  # 1.59
+
 # Проверка на изменение цветов:
 circle1.set_color(55, 66, 77)  # Изменится
 print(circle1.get_color())
 cube1.set_color(300, 70, 15)  # Не изменится
 print(cube1.get_color())
-
-# Проверка радиуса
-print(round(circle1.get_radius(), 2))  # 1.59
 
 # Проверка на изменение сторон:
 cube1.set_sides(5, 3, 12, 4, 5)  # Не изменится
@@ -127,20 +127,21 @@ print(cube1.get_sides())
 circle1.set_sides(15)  # Изменится
 print(circle1.get_sides())
 
-# Проверка периметра (круга), это и есть длина:
+# Проверка периметра, это и есть длина:
 print(len(circle1))
 
 # Проверка объёма, площади и периметра (куба):
 print(cube1.get_volume())
-print(cube1.get_square())   # 216
-print(len(cube1))           # 72
+print(cube1.get_square())  # 216
+print(len(cube1))  # 72
 
-# Проверка радиуса и площади (треугольника)
+# Проверка радиуса и площади (круга)
 print(round(circle1.get_radius(), 2))  # 2.39
 print(round(circle1.get_square(), 2))  # 17.9
 
 triangle1 = Triangle((), 3, 5, 4)
 
 # Проверка площади (треугольника)
-print(triangle1.get_square())   # 6.0
-print(triangle1.get_color())    # [255, 255, 255]
+print(triangle1.get_square())  # 6.0
+# Проверка цветов:
+print(triangle1.get_color())  # [255, 255, 255]
