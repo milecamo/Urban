@@ -113,6 +113,8 @@ ur.watch_video('Для чего девушкам парень программи
 # Проверка входа в другой аккаунт
 ur.register('vasya_pupkin', 'F8098FM8fjm9jmi', 55)
 print(ur.current_user)
+ur.log_in('vasya_pupkin', 'lolkekcheburek')
+print(ur.current_user)
 
 # Попытка воспроизведения несуществующего видео
 ur.watch_video('Лучший язык программирования 2024 года!')
