@@ -126,9 +126,10 @@ print(circle1.get_sides())
 # Проверка периметра (круга), это и есть длина:
 print(len(circle1))
 
-# Проверка объёма и периметра (куба):
+# Проверка объёма, площади и периметра (куба):
 print(cube1.get_volume())
-print(len(cube1))  # 72
+print(cube1.get_square())   # 216
+print(len(cube1))           # 72
 
 # Проверка радиуса и площади (треугольника)
 print(round(circle1.get_radius(), 2))  # 2.39
@@ -137,5 +138,5 @@ print(round(circle1.get_square(), 2))  # 17.9
 triangle1 = Triangle((), 3, 5, 4)
 
 # Проверка площади (треугольника)
-print(triangle1.get_square())  # 6.0
-print(triangle1.get_color())  # [255, 255, 255]
+print(triangle1.get_square())   # 6.0
+print(triangle1.get_color())    # [255, 255, 255]
