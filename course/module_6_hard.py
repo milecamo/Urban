@@ -60,6 +60,9 @@ class Figure:
 
 class Circle(Figure):
     sides_count = 1
+    def __init__(self, color, *sides):
+        super().__init__(color, *sides)
+        self.__radius = 0
 
     def set_sides(self, *new_sides):
         super().set_sides(*new_sides)
@@ -101,8 +104,8 @@ class Cube(Figure):
         return self.get_sides()[0] ** 2 * 6
 
     # площадь куба
-    def __len__(self):
-        return self.get_square()
+    # def __len__(self):
+    #     return self.get_square()
 
 
 circle1 = Circle((200, 200, 100), 10)  # (Цвет, стороны)
@@ -123,9 +126,9 @@ print(circle1.get_sides())
 # Проверка периметра (круга), это и есть длина:
 print(len(circle1))
 
-# Проверка объёма и площади (куба):
+# Проверка объёма и периметра (куба):
 print(cube1.get_volume())
-print(len(cube1))  # 216
+print(len(cube1))  # 72
 
 # Проверка радиуса и площади (треугольника)
 print(round(circle1.get_radius(), 2))  # 2.39
