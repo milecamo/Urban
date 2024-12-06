@@ -75,10 +75,11 @@ class Circle(Figure):
 
         super().set_sides(*new_sides)
 
-        if old_side != self.get_sides()[0]:
+        new_side = self.get_sides()[0]
+        if old_side != new_side:
             # for the 1st time self.__radius will be defined here
             # if it's not defined in __init__
-            self.__radius = self.get_sides()[0] / 2 / pi
+            self.__radius = new_side / 2 / pi
 
     def get_square(self):
         return self.get_sides()[0] ** 2 / 4 / pi
