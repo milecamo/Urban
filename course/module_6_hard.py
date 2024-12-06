@@ -12,7 +12,7 @@ class Figure:
         self.set_sides(*sides)
 
         self.__color = None
-        if len(color) == 3:
+        if hasattr(color, '__iter__') and len(color) == 3:
             self.set_color(*color)
         if not self.__color:
             self.__color = (255, 255, 255)
@@ -139,7 +139,7 @@ print(len(cube1))  # 72
 print(round(circle1.get_radius(), 2))  # 2.39
 print(round(circle1.get_square(), 2))  # 17.9
 
-triangle1 = Triangle((), 3, 5, 4)
+triangle1 = Triangle(2, 3, 4, 5)
 
 # Проверка площади (треугольника)
 print(triangle1.get_square())  # 6.0
