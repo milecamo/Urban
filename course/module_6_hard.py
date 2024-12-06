@@ -6,7 +6,7 @@ from math import pi, sqrt
 class Figure:
     sides_count = 0
 
-    def __init__(self, color, *sides):
+    def __init__(self, color = (255, 255, 255), *sides):
         self.__sides = None
         self.set_sides(*sides)
 
@@ -63,16 +63,21 @@ class Figure:
 class Circle(Figure):
     sides_count = 1
 
-    def __init__(self, color, *sides):
+    def __init__(self, color = (255, 255, 255), *sides):
+        # although we do not must define self.__radius in __init__
         self.__radius = 0
         super().__init__(color, *sides)
 
     def set_sides(self, *new_sides):
+        # if self.__radius isn't defined in __init__
+        # old_side = 0 if not hasattr(self, '__radius') else self.get_sides()[0]
         old_side = 0 if not self.__radius else self.get_sides()[0]
 
         super().set_sides(*new_sides)
 
         if old_side != self.get_sides()[0]:
+            # for the 1st time self.__radius will be defined here
+            # if it's not defined in __init__
             self.__radius = self.get_sides()[0] / 2 / pi
 
     def get_square(self):
