@@ -95,16 +95,10 @@ class Cube(Figure):
         super().set_sides(*sides)
 
     def get_volume(self):
-        self.sides_count = 1
-        result = self.get_sides()[0] ** 3
-        self.sides_count = 12
-        return result
+        return self.get_sides()[0] ** 3
 
     def get_square(self):
-        self.sides_count = 1
-        result = self.get_sides()[0] ** 2 * 6
-        self.sides_count = 12
-        return result
+        return self.get_sides()[0] ** 2 * 6
 
     # площадь куба
     def __len__(self):
