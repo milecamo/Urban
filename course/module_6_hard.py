@@ -23,13 +23,14 @@ class Figure:
 
     @staticmethod
     def __is_valid_color(r: int, g: int, b: int):
-        if 0 < r < 256 and 0 < g < 256 and 0 < b < 256:
-            return True
-        return False
+        for color in (r, g, b):
+            if not isinstance(color, int) or color < 0 or color > 255:
+                return False
+        return True
 
     def set_color(self, r: int, g: int, b: int):
         if self.__is_valid_color(r, g, b):
-            self.__color = (int(r), int(g), int(b))
+            self.__color = (r, g, b)
 
     def __is_valid_sides(self, *sides):
         if len(sides) != self.sides_count:
@@ -118,6 +119,8 @@ print(round(circle1.get_radius(), 2))  # 1.59
 circle1.set_color(55, 66, 77)  # Изменится
 print(circle1.get_color())
 cube1.set_color(300, 70, 15)  # Не изменится
+cube1.set_color(-1, 70, 15)  # Не изменится
+cube1.set_color(1.0, 70, 15)  # Не изменится
 print(cube1.get_color())
 
 # Проверка на изменение сторон:
