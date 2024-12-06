@@ -17,19 +17,17 @@ class Animal:
             print("It's too deep, i can't dive :(")
             return
         # self._cords = list(map(lambda cord_val: self.speed * cord_val, (dx, dy, dz)))
+        self._cords = list(dcord_val * self.speed
+                           for dcord_val in (dx, dy, dz))
         # add new functionality
-        # self._cords = list(cur_cord + dcord for cur_cord, dcord in
-        #                    zip(self._cords,
-        #                        map(lambda cord_val:
-        #                            self.speed * cord_val, (dx, dy, dz))))
-        # more readable and efficient, plus new functionality
-        for i, dcord in zip(range(3), (dx, dy, dz)):
-             # self._cords[i] += dcord * self.speed
-             self._cords[i] = dcord * self.speed
+        # self._cords = list(cur_cord + dcord_val * self.speed
+        #                    for cur_cord, dcord_val
+        #                    in zip(self._cords, (dx, dy, dz)))
 
     def get_cords(self):
-        # print(', '.join(f'{cord_title}: {cord_val}' for cord_title, cord_val in
-        #                 zip(('X','Y','Z'), self._cords)))
+        # print(', '.join(f'{cord_title}: {cord_val}'
+        #                 for cord_title, cord_val
+        #                 in zip(('X', 'Y', 'Z'), self._cords)))
         # more readable and efficient
         print(f'X: {self._cords[0]}, Y: {self._cords[1]}, Z: {self._cords[2]}')
 
