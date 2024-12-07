@@ -157,11 +157,15 @@ print(len(cube1))  # 72
 print(round(circle1.get_radius(), 2))  # 2.39
 print(round(circle1.get_square(), 2))  # 17.9
 
-# triangle1 = Triangle((), 3, 4, 5)
-triangle1 = Triangle(1)
-triangle1.set_sides(3,4,5)
+triangle1 = Triangle(())
+# or
+# triangle1 = Triangle('rgb')
+# or
+# triangle1 = Triangle(1)
 
 # Проверка площади (треугольника)
+print(round(triangle1.get_square(), 2))  # 0.43
+triangle1.set_sides(3,4,5)
 print(round(triangle1.get_square(), 2))  # 6.0
 # Проверка цветов:
 print(triangle1.get_color())  # [255, 255, 255]
