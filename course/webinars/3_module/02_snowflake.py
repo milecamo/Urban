@@ -2,16 +2,16 @@
 
 import simple_draw as sd
 
-sd.resolution = (1200, 600)
+sd.resolution = (800, 400)
 # познакомится с параметрами библиотечной функции рисования снежинки sd.snowflake()
 
 # sd.snowflake(center=point_0, length=200, factor_a=0.5)
 
 # реализовать падение одной снежинки
-y = 500
+y = 400
 x = 100
 
-y2 = 450
+y2 = 375
 x2 = 150
 while True:
     sd.clear_screen()
@@ -25,7 +25,7 @@ while True:
     point2 = sd.get_point(x2, y2)
     sd.snowflake(center=point2, length=30)
     y2 -= 10
-    if y2 < 50:
+    if y2 < 30:
        break
     x2 = x2 + 20
 

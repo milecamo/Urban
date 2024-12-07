@@ -2,7 +2,7 @@
 
 import simple_draw as sd
 
-sd.resolution = (600, 800)
+sd.resolution = (600, 500)
 
 # нарисовать ветку дерева из точки (300, 5) вертикально вверх длиной 100
 
@@ -48,14 +48,14 @@ def branch(point, angle, length, delta):
     v1.draw()
     next_point = v1.end_point
     next_angle = angle - delta
-    next_length = length * .75
+    next_length = length * .75 # (72 - abs(angle - 90)) / 90
     branch(point=next_point, angle=next_angle, length=next_length, delta=delta)
 
 
-for delta in range(0, 51, 10):
-    branch(point=point_0, angle=90, length=150, delta=delta)
-for delta in range(-50, 1, 10):
-    branch(point=point_0, angle=90, length=150, delta=delta)
+for delta in range(0, 37, 3):
+    branch(point=point_0, angle=90, length=100, delta=delta)
+for delta in range(-36, 1, 3):
+    branch(point=point_0, angle=90, length=100, delta=delta)
 
 
 sd.pause()
