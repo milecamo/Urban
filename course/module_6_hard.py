@@ -2,11 +2,13 @@
 
 from math import pi, sqrt
 
+DEFAULT_COLOR = (255, 255, 255)
+
 
 class Figure:
     sides_count = 0
 
-    def __init__(self, color = (255, 255, 255), *sides):
+    def __init__(self, color=DEFAULT_COLOR, *sides):
         self.__sides = None
         self.set_sides(*sides)
 
@@ -14,7 +16,7 @@ class Figure:
         if hasattr(color, '__iter__') and len(color) == 3:
             self.set_color(*color)
         if not self.__color:
-            self.__color = (255, 255, 255)
+            self.__color = DEFAULT_COLOR
 
         self.filled = False
 
@@ -63,7 +65,7 @@ class Figure:
 class Circle(Figure):
     sides_count = 1
 
-    def __init__(self, color = (255, 255, 255), *sides):
+    def __init__(self, color=DEFAULT_COLOR, *sides):
         # although we do not must define self.__radius in __init__
         self.__radius = 0
         super().__init__(color, *sides)
