@@ -48,7 +48,7 @@ def branch(point, angle, length, delta):
     v1.draw()
     next_point = v1.end_point
     next_angle = angle - delta
-    next_length = length * .75 # (72 - abs(angle - 90)) / 90
+    next_length = length * .75 # (90 - abs(angle - 90)) / 90
     branch(point=next_point, angle=next_angle, length=next_length, delta=delta)
 
 
