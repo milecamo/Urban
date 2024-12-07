@@ -1,0 +1,8 @@
+modules = ["python-3.12"]
+run = "sh run.sh"
+
+[nix]
+channel = "stable-24_05"
+
+[deployment]
+run = ["sh", "-c", "python3 ./course/module_6_hard.py"]
