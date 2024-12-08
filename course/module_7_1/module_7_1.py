@@ -26,11 +26,11 @@ class Shop:
 
     def add(self, *products):
         file_data = self.get_products()
-        file_strings = file_data.split('\n')
+        product_strings = file_data.split('\n')
         products_base = []
-        for file_string in file_strings:
-            product_data = file_string.split(', ')
-            if len(product_data) > 1:
+        for product_string in product_strings:
+            if len(product_string) > 1:
+                product_data = product_string.split(', ')
                 product = Product(product_data[0], product_data[1], product_data[2])
                 products_base.append(product)
 
