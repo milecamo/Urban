@@ -13,7 +13,7 @@ class Product:
         if isinstance(other, str):
             return self.name == other
         # elif isinstance(other, Product):
-        #     return self.name == other.name
+        #     return self.name == other.name # and self.category == other.category
         return NotImplemented
 
 
@@ -37,6 +37,19 @@ class Shop:
                 product_data = product_string.split(', ')
                 # products_base.append(Product(product_data[0], float(product_data[1]), product_data[2]))
                 products_base.append(product_data[0])
+
+        # Add weight to product in the category # Or add weight and change category
+        # for product in products:
+        #     if isinstance(product, Product):
+        #         if product in products_base:
+        #             products_index = products_base.index(product)
+        #             products_base[products_index].weight += product.weight
+        #             # products_base[products_index].category = product.category
+        #         else:
+        #             products_base.append(product)
+        # with open(self.__file_name, 'w') as file:
+        #     for product in products_base:
+        #         file.write(f'{product}\n')
 
         with open(self.__file_name, 'a') as file:
             for product in products:
