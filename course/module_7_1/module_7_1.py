@@ -10,7 +10,11 @@ class Product:
         return f'{self.name}, {self.weight}, {self.category}'
 
     def __eq__(self, other):
-        return self.name == other.name
+        if isinstance(other, str):
+            return self.name == other
+        # elif isinstance(other, Product):
+        #     return self.name == other.name
+        return NotImplemented
 
 
 class Shop:
@@ -26,13 +30,13 @@ class Shop:
 
     def add(self, *products):
         file_data = self.get_products()
-        product_strings = file_data.split('\n')
+        products_strings = file_data.split('\n')
         products_base = []
-        for product_string in product_strings:
-            if len(product_string) > 1:
+        for product_string in products_strings:
+            if product_string:
                 product_data = product_string.split(', ')
-                product = Product(product_data[0], product_data[1], product_data[2])
-                products_base.append(product)
+                # products_base.append(Product(product_data[0], float(product_data[1]), product_data[2]))
+                products_base.append(product_data[0])
 
         with open(self.__file_name, 'a') as file:
             for product in products:
