@@ -1,7 +1,7 @@
 from module_7_3 import WordsFinder
 
 if __name__ == '__main__':
-    finder1 = WordsFinder('All/Walt Whitman - O Captain! My Captain!.txt')
+    finder1 = WordsFinder('Walt Whitman - O Captain! My Captain!.txt')
     print(finder1.get_all_words())
     print(finder1.find('captain'))
     print(finder1.count('captain'))

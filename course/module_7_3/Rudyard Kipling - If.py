@@ -1,7 +1,7 @@
 from module_7_3 import WordsFinder
 
 if __name__ == '__main__':
-    finder1 = WordsFinder('All/Rudyard Kipling - If.txt')
+    finder1 = WordsFinder('Rudyard Kipling - If.txt')
     print(finder1.get_all_words())
     print(finder1.find('if'))
     print(finder1.count('if'))

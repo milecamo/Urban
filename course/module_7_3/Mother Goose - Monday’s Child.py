@@ -1,7 +1,7 @@
 from module_7_3 import WordsFinder
 
 if __name__ == '__main__':
-    finder1 = WordsFinder('All/Mother Goose - Monday’s Child.txt')
+    finder1 = WordsFinder('Mother Goose - Monday’s Child.txt')
     print(finder1.get_all_words())
     print(finder1.find('Child'))
     print(finder1.count('Child'))
