@@ -120,4 +120,7 @@ if __name__ == '__main__':
     test('captain', 'Result - O Captain! My Captain!.txt', 'Walt Whitman - O Captain! My Captain!.txt')
     test('if', 'Result - If.txt', 'Rudyard Kipling - If.txt')
     test('Child', 'Result - Monday’s Child.txt', 'Mother Goose - Monday’s Child.txt')
-
+    test('the', 'Result - all.txt',
+         'Walt Whitman - O Captain! My Captain!.txt',
+         'Rudyard Kipling - If.txt',
+         'Mother Goose - Monday’s Child.txt')
