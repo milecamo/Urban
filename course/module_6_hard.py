@@ -159,9 +159,9 @@ print(round(circle1.get_square(), 2))  # 17.9
 
 triangle1 = Triangle(())
 # or
-# triangle1 = Triangle('rgb')
+triangle1 = Triangle('rgb')
 # or
-# triangle1 = Triangle(1)
+triangle1 = Triangle(1)
 
 # Проверка площади (треугольника)
 print(round(triangle1.get_square(), 2))  # 0.43
