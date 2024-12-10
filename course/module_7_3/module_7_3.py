@@ -1,7 +1,10 @@
 # Задача "Найдёт везде"
 
+import time
+
+
 class WordsFinder:
-    __file_words = None # for efficient recursive code part
+    __file_words = None  # for efficient recursive code part
 
     def __init__(self, *file_names):
         self.file_names = file_names
@@ -40,13 +43,13 @@ class WordsFinder:
                 new_file_words.append(file_words.lower())
         self.__file_words = new_file_words
 
-    def get_all_words(self):
+    def get_all_words(self, efficient=None):
+        start_time = time.time()
         all_words = {}
         for file_name in self.file_names:
             with open(file_name, encoding='utf-8') as file:
                 file_data = file.read()
                 punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
-                efficient = True
                 if efficient:
                     # efficient code
                     # first split on ' - '
@@ -65,22 +68,26 @@ class WordsFinder:
                     for chr in punct_marks:
                         file_data = file_data.replace(chr, ' ')
                     all_words[file_name] = file_data.split()
+        if efficient != None:
+            end_time = time.time()
+            execution_time = end_time - start_time
+            print(f"Время выполнения: {execution_time} секунд. Efficient is {efficient}")
         return all_words
 
-    def find(self, word):
+    def find(self, word, efficient=None):
         word_positions = {}
         low_word = word.lower()
-        for file_name, file_words in self.get_all_words().items():
+        for file_name, file_words in self.get_all_words(efficient).items():
             for i in range(len(file_words)):
                 if file_words[i] == low_word:
                     word_positions[file_name] = i + 1
                     break
         return word_positions
 
-    def count(self, word):
+    def count(self, word, efficient=None):
         word_counts = {}
         low_word = word.lower()
-        for file_name, file_words in self.get_all_words().items():
+        for file_name, file_words in self.get_all_words(efficient).items():
             word_count = 0
             for file_word in file_words:
                 if file_word == low_word:
@@ -89,8 +96,23 @@ class WordsFinder:
         return word_counts
 
 
+def test(word, result_file, *file_names):
+    finder1 = WordsFinder(*file_names)
+    print(finder1.get_all_words())
+    print(finder1.find(word))
+    print(finder1.count(word))
+    if result_file:
+        with open(result_file, 'w', encoding='utf-8') as file:
+            file.write(str(finder1.get_all_words(False)))
+            file.write('\n')
+            file.write(str(finder1.find(word, True)))
+            file.write('\n')
+            file.write(str(finder1.count(word)))
+            file.write('\n')
+
+
 if __name__ == '__main__':
     finder2 = WordsFinder('test_file.txt')
-    print(finder2.get_all_words())  # Все слова
-    print(finder2.find('TEXT'))  # 3 слово по счёту
+    print(finder2.get_all_words(False))  # Все слова
+    print(finder2.find('TEXT', True))  # 3 слово по счёту
     print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
