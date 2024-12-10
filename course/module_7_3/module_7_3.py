@@ -117,9 +117,12 @@ if __name__ == '__main__':
     print(finder2.find('TEXT', True))  # 3 слово по счёту
     print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
 
-    test('captain', 'Result - O Captain! My Captain!.txt', 'Walt Whitman - O Captain! My Captain!.txt')
-    test('if', 'Result - If.txt', 'Rudyard Kipling - If.txt')
-    test('Child', 'Result - Monday’s Child.txt', 'Mother Goose - Monday’s Child.txt')
+    test('captain', 'Result - O Captain! My Captain!.txt',
+         'Walt Whitman - O Captain! My Captain!.txt')
+    test('if', 'Result - If.txt',
+         'Rudyard Kipling - If.txt')
+    test('Child', 'Result - Monday’s Child.txt',
+         'Mother Goose - Monday’s Child.txt')
     test('the', 'Result - all.txt',
          'Walt Whitman - O Captain! My Captain!.txt',
          'Rudyard Kipling - If.txt',
