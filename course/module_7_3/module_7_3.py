@@ -30,14 +30,14 @@ class WordsFinder:
     def __integrate_words(self):
         new_file_words = []
         # for i in range(len(self.__file_words)):
-        for file_word in self.__file_words:
-            if isinstance(file_word, list):
-                self.__file_words = file_word
+        for file_words in self.__file_words:
+            if isinstance(file_words, list):
+                self.__file_words = file_words
                 self.__integrate_words()
                 for word in self.__file_words:
                     new_file_words.append(word)
-            elif isinstance(file_word, str) and file_word:
-                new_file_words.append(file_word.lower())
+            elif isinstance(file_words, str) and file_words:
+                new_file_words.append(file_words.lower())
         self.__file_words = new_file_words
 
     def get_all_words(self):
