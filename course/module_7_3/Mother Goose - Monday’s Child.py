@@ -8,8 +8,8 @@ if __name__ == '__main__':
     with open('Mother Goose - Monday’s Child/result.txt', 'w', encoding='utf-8') as file:
         file.write(str(finder1.get_all_words()))
         file.write('\n')
-        file.write(str(finder1.find('the')))
+        file.write(str(finder1.find('Child')))
         file.write('\n')
-        file.write(str(finder1.count('the')))
+        file.write(str(finder1.count('Child')))
         file.write('\n')
 

@@ -8,8 +8,8 @@ if __name__ == '__main__':
     with open('Rudyard Kipling - If/result.txt', 'w', encoding='utf-8') as file:
         file.write(str(finder1.get_all_words()))
         file.write('\n')
-        file.write(str(finder1.find('the')))
+        file.write(str(finder1.find('if')))
         file.write('\n')
-        file.write(str(finder1.count('the')))
+        file.write(str(finder1.count('if')))
         file.write('\n')
 
