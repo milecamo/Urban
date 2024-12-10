@@ -11,7 +11,7 @@ class WordsFinder:
                 file_data = file.read()
                 file_data.lower()
                 for chr in [',', '.', '=', '!', '?', ';', ':', ' - ', '\n']:
-                    file_data.replace(chr, ' ')
+                    file_data = file_data.replace(chr, ' ')
                 file_words = file_data.split()
                 for i in range(len(file_words)):
                     file_words[i] = file_words[i].lower()
@@ -38,6 +38,7 @@ class WordsFinder:
                     word_count += 1
             word_counts[file_name] = word_count
         return word_counts
+
 
 if __name__ == '__main__':
     finder2 = WordsFinder('test_file.txt')
