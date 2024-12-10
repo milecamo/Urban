@@ -4,12 +4,12 @@ import time
 
 
 class WordsFinder:
-    __file_words = None  # for efficient recursive code part
+    __file_words = None  # for alternative recursive code part
 
     def __init__(self, *file_names):
         self.file_names = file_names
 
-    # for efficient code part
+    # for alternative code part
     # recursive split list of lists and strings
     def __split_words(self, sep=None):
         for i in range(len(self.__file_words)):
@@ -28,7 +28,7 @@ class WordsFinder:
 
                 self.__file_words = old__file_words
 
-    # for efficient code part
+    # for alternative code part
     # make list of strings from recursive list of lists and strings
     def __integrate_words(self):
         new_file_words = []
@@ -43,15 +43,15 @@ class WordsFinder:
                 new_file_words.append(file_words.lower())
         self.__file_words = new_file_words
 
-    def get_all_words(self, efficient=None):
+    def get_all_words(self, alternative=None):
         start_time = time.time()
         all_words = {}
         for file_name in self.file_names:
             with open(file_name, encoding='utf-8') as file:
                 file_data = file.read()
                 punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
-                if efficient:
-                    # efficient code
+                if alternative:
+                    # alternative code
                     # first split on ' - '
                     self.__file_words = file_data.split(punct_marks[len(punct_marks) - 1])
                     # then split on any whitespace
@@ -66,28 +66,28 @@ class WordsFinder:
                     # simple code
                     file_data = file_data.lower()
                     for chr in punct_marks:
-                        file_data = file_data.replace(chr, ' ')
+                        file_data = file_data.replace(chr, '\r')
                     all_words[file_name] = file_data.split()
-        if efficient != None:
+        if alternative != None:
             end_time = time.time()
             execution_time = end_time - start_time
-            print(f"Время выполнения: {execution_time} секунд. Efficient is {efficient}")
+            print(f"Время выполнения: {execution_time} секунд. alternative is {alternative}")
         return all_words
 
-    def find(self, word, efficient=None):
+    def find(self, word, alternative=None):
         word_positions = {}
         low_word = word.lower()
-        for file_name, file_words in self.get_all_words(efficient).items():
+        for file_name, file_words in self.get_all_words(alternative).items():
             for i in range(len(file_words)):
                 if file_words[i] == low_word:
                     word_positions[file_name] = i + 1
                     break
         return word_positions
 
-    def count(self, word, efficient=None):
+    def count(self, word, alternative=None):
         word_counts = {}
         low_word = word.lower()
-        for file_name, file_words in self.get_all_words(efficient).items():
+        for file_name, file_words in self.get_all_words(alternative).items():
             word_count = 0
             for file_word in file_words:
                 if file_word == low_word:
