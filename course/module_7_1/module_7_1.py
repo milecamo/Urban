@@ -22,10 +22,11 @@ class Shop:
         self.__file_name = 'products.txt'
 
     def get_products(self):
-        with open(self.__file_name, 'a') as _:
-            pass
-        with open(self.__file_name) as file:
-            file_data = file.read()
+        file = open(self.__file_name, 'a')
+        file.close()
+        file = open(self.__file_name)
+        file_data = file.read()
+        file.close()
         return file_data
 
     def add(self, *products):
@@ -47,17 +48,19 @@ class Shop:
         #             # products_base[products_index].category = product.category
         #         else:
         #             products_base.append(product)
-        # with open(self.__file_name, 'w') as file:
-        #     for product in products_base:
-        #         file.write(f'{product}\n')
+        # file = open(self.__file_name, 'w')
+        # for product in products_base:
+        #     file.write(f'{product}\n')
+        # file.close()
 
-        with open(self.__file_name, 'a') as file:
-            for product in products:
-                if isinstance(product, Product):
-                    if product in products_base:
-                        print(f'Продукт {product.name} уже есть в магазине')
-                    else:
-                        file.write(f'{product}\n')
+        file = open(self.__file_name, 'a')
+        for product in products:
+            if isinstance(product, Product):
+                if product in products_base:
+                    print(f'Продукт {product.name} уже есть в магазине')
+                else:
+                    file.write(f'{product}\n')
+        file.close()
 
 
 s1 = Shop()
