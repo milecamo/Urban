@@ -67,8 +67,8 @@ class WordsFinder:
             else:
                 # simple code
                 # file_data = file_data.lower()
-                for chr in punct_marks:
-                    file_data = file_data.replace(chr, '\r')
+                for char in punct_marks:
+                    file_data = file_data.replace(char, '\r')
                 all_words[file_name] = file_data.split()
             execution_time += time.time() - start_time
         if alternative != None:
