@@ -100,8 +100,9 @@ class WordsFinder:
 
 def test(word, result_file, *file_names):
     finder1 = WordsFinder(*file_names)
+    print(finder1.get_all_words(True))
     result1 = finder1.get_all_words(False)
-    result2 = finder1.find(word, True)
+    result2 = finder1.find(word)
     result3 = finder1.count(word)
     print(result1)
     print(result2)
@@ -115,8 +116,9 @@ def test(word, result_file, *file_names):
 
 if __name__ == '__main__':
     finder2 = WordsFinder('test_file.txt')
+    print(finder2.get_all_words(True))  # Все слова
     print(finder2.get_all_words(False))  # Все слова
-    print(finder2.find('TEXT', True))  # 3 слово по счёту
+    print(finder2.find('TEXT'))  # 3 слово по счёту
     print(finder2.count('teXT'), end='\n\n')  # 4 слова teXT в тексте всего
 
     test('captain', 'Result - O Captain! My Captain!.txt',
