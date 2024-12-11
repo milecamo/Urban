@@ -52,6 +52,7 @@ class WordsFinder:
                 file_data = file.read()
                 file_data = file_data.lower()
                 punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
+                # punct_marks = [',', '.', '=', '!', '?', ';', ':', ' — '] # should be
                 if alternative:
                     # alternative code
                     # first split on ' - '
