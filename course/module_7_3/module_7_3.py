@@ -1,7 +1,5 @@
 # Задача "Найдёт везде"
 
-import time
-
 
 class WordsFinder:
     def __init__(self, *file_names):
