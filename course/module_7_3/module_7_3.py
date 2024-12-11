@@ -48,29 +48,29 @@ class WordsFinder:
         start_time = time.time()
         all_words = {}
         for file_name in self.file_names:
+            file_data = None
             with open(file_name, encoding='utf-8') as file:
-                file_data = file.read()
-                file_data = file_data.lower()
-                punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
-                # punct_marks = [',', '.', '=', '!', '?', ';', ':', ' — '] # should be
-                if alternative:
-                    # alternative code
-                    # first split on ' - '
-                    self.__file_words = file_data.split(punct_marks[len(punct_marks) - 1])
-                    # then split on any whitespace
-                    self.__split_words()
-                    # then split on other punctuation marks
-                    for i in range(len(punct_marks) - 1):
-                        self.__split_words(punct_marks[i])
-                    # make list of strings from recursive list of lists and strings
-                    self.__integrate_words()
-                    all_words[file_name] = self.__file_words
-                else:
-                    # simple code
-                    # file_data = file_data.lower()
-                    for chr in punct_marks:
-                        file_data = file_data.replace(chr, '\r')
-                    all_words[file_name] = file_data.split()
+                file_data = file.read().lower()
+            punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
+            # punct_marks = [',', '.', '=', '!', '?', ';', ':', ' — '] # should be
+            if alternative:
+                # alternative code
+                # first split on ' - '
+                self.__file_words = file_data.split(punct_marks[len(punct_marks) - 1])
+                # then split on any whitespace
+                self.__split_words()
+                # then split on other punctuation marks
+                for i in range(len(punct_marks) - 1):
+                    self.__split_words(punct_marks[i])
+                # make list of strings from recursive list of lists and strings
+                self.__integrate_words()
+                all_words[file_name] = self.__file_words
+            else:
+                # simple code
+                # file_data = file_data.lower()
+                for chr in punct_marks:
+                    file_data = file_data.replace(chr, '\r')
+                all_words[file_name] = file_data.split()
         if alternative != None:
             end_time = time.time()
             execution_time = end_time - start_time
