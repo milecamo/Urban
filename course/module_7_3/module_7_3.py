@@ -22,8 +22,8 @@ class WordsFinder:
             elif isinstance(self.__file_words[i], list):
                 # recursive call for list
                 old__file_words = self.__file_words
-
                 self.__file_words = old__file_words[i]
+
                 self.__split_words(sep)
 
                 self.__file_words = old__file_words
@@ -33,14 +33,15 @@ class WordsFinder:
     def __integrate_words(self):
         new_file_words = []
         # for i in range(len(self.__file_words)):
-        for file_words in self.__file_words:
-            if isinstance(file_words, list):
-                self.__file_words = file_words
+        for words in self.__file_words:
+            if isinstance(words, list):
+                self.__file_words = words
                 self.__integrate_words()
                 for word in self.__file_words:
                     new_file_words.append(word)
-            elif isinstance(file_words, str) and file_words:
-                new_file_words.append(file_words.lower())
+            elif isinstance(words, str) and words:
+                # new_file_words.append(file_words.lower())
+                new_file_words.append(words)
         self.__file_words = new_file_words
 
     def get_all_words(self, alternative=None):
@@ -49,6 +50,7 @@ class WordsFinder:
         for file_name in self.file_names:
             with open(file_name, encoding='utf-8') as file:
                 file_data = file.read()
+                file_data = file_data.lower()
                 punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
                 if alternative:
                     # alternative code
@@ -64,7 +66,7 @@ class WordsFinder:
                     all_words[file_name] = self.__file_words
                 else:
                     # simple code
-                    file_data = file_data.lower()
+                    # file_data = file_data.lower()
                     for chr in punct_marks:
                         file_data = file_data.replace(chr, '\r')
                     all_words[file_name] = file_data.split()
@@ -98,24 +100,24 @@ class WordsFinder:
 
 def test(word, result_file, *file_names):
     finder1 = WordsFinder(*file_names)
-    print(finder1.get_all_words())
-    print(finder1.find(word))
-    print(finder1.count(word))
+    result1 = finder1.get_all_words(False)
+    result2 = finder1.find(word, True)
+    result3 = finder1.count(word)
+    print(result1)
+    print(result2)
+    print(result3, end='\n\n')
     if result_file:
         with open(result_file, 'w', encoding='utf-8') as file:
-            file.write(str(finder1.get_all_words(False)))
-            file.write('\n')
-            file.write(str(finder1.find(word, True)))
-            file.write('\n')
-            file.write(str(finder1.count(word)))
-            file.write('\n')
+            for res in (result1, result2, result3):
+                file.write(str(res))
+                file.write('\n')
 
 
 if __name__ == '__main__':
     finder2 = WordsFinder('test_file.txt')
     print(finder2.get_all_words(False))  # Все слова
     print(finder2.find('TEXT', True))  # 3 слово по счёту
-    print(finder2.count('teXT'))  # 4 слова teXT в тексте всего
+    print(finder2.count('teXT'), end='\n\n')  # 4 слова teXT в тексте всего
 
     test('captain', 'Result - O Captain! My Captain!.txt',
          'Walt Whitman - O Captain! My Captain!.txt')
