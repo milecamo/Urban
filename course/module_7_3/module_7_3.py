@@ -5,6 +5,7 @@ import time
 
 class WordsFinder:
     __file_words = None  # for alternative recursive code part
+    __execution_time = 0
 
     def __init__(self, *file_names):
         self.file_names = file_names
@@ -42,7 +43,7 @@ class WordsFinder:
         self.__file_words = new_file_words
 
     def get_all_words(self, alternative=None):
-        start_time = time.time()
+        start_time = 0
         all_words = {}
         for file_name in self.file_names:
             file_data = None
@@ -50,6 +51,7 @@ class WordsFinder:
                 file_data = file.read().lower()
             punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
             # punct_marks = [',', '.', '=', '!', '?', ';', ':', ' — '] # should be
+            start_time = time.time()
             if alternative:
                 # alternative code
                 # first split on ' - '
@@ -70,8 +72,13 @@ class WordsFinder:
                 all_words[file_name] = file_data.split()
         if alternative != None:
             end_time = time.time()
-            execution_time = end_time - start_time
-            print(f"Время выполнения: {execution_time} секунд. alternative is {alternative}")
+            old_execution_time = self.__execution_time
+            self.__execution_time = (end_time - start_time) * 1000
+            print(f"Время выполнения: {round(self.__execution_time, 4)} мс. alternative is {alternative}")
+            if old_execution_time:
+                print(f"Время выполнения лучше в {round(old_execution_time / self.__execution_time, 2)} раз")
+        else:
+            self.__execution_time = 0
         return all_words
 
     def find(self, word, alternative=None):
