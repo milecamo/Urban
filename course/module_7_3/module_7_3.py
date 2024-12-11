@@ -89,21 +89,14 @@ class WordsFinder:
         word_positions = {}
         low_word = word.lower()
         for file_name, file_words in self.get_all_words(alternative).items():
-            for i in range(len(file_words)):
-                if file_words[i] == low_word:
-                    word_positions[file_name] = i + 1
-                    break
+            word_positions[file_name] = file_words.index(low_word) + 1
         return word_positions
 
     def count(self, word, alternative=None):
         word_counts = {}
         low_word = word.lower()
         for file_name, file_words in self.get_all_words(alternative).items():
-            word_count = 0
-            for file_word in file_words:
-                if file_word == low_word:
-                    word_count += 1
-            word_counts[file_name] = word_count
+            word_counts[file_name] = file_words.count(low_word)
         return word_counts
 
 
