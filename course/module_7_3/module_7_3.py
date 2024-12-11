@@ -15,12 +15,9 @@ class WordsFinder:
         for i in range(len(self.__file_words)):
             if isinstance(self.__file_words[i], str):
                 # split string to list
-                if sep:
-                    self.__file_words[i] = self.__file_words[i].split(sep)
-                else:
-                    self.__file_words[i] = self.__file_words[i].split()
+                self.__file_words[i] = self.__file_words[i].split(sep)
             elif isinstance(self.__file_words[i], list):
-                # recursive call for list
+                # recursive __split_words call for self.__file_words[i]
                 old__file_words = self.__file_words
                 self.__file_words = old__file_words[i]
 
