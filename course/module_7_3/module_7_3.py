@@ -76,7 +76,11 @@ class WordsFinder:
             self.__execution_time = (end_time - start_time) * 1000
             print(f"Время выполнения: {round(self.__execution_time, 4)} мс. alternative is {alternative}")
             if old_execution_time:
-                print(f"Время выполнения лучше в {round(old_execution_time / self.__execution_time, 2)} раз")
+                dif = old_execution_time / self.__execution_time
+                if dif > 1:
+                    print(f"Время выполнения лучше в {round(dif, 2)} раз")
+                else:
+                    print(f"Время выполнения хуже в {round(1 / dif, 2)} раз")
         else:
             self.__execution_time = 0
         return all_words
@@ -105,8 +109,8 @@ class WordsFinder:
 
 def test(word, result_file, *file_names):
     finder1 = WordsFinder(*file_names)
-    print(finder1.get_all_words(True))
-    result1 = finder1.get_all_words(False)
+    print(finder1.get_all_words(False))
+    result1 = finder1.get_all_words(True)
     result2 = finder1.find(word)
     result3 = finder1.count(word)
     print(result1)
@@ -121,8 +125,8 @@ def test(word, result_file, *file_names):
 
 if __name__ == '__main__':
     finder2 = WordsFinder('test_file.txt')
-    print(finder2.get_all_words(True))  # Все слова
     print(finder2.get_all_words(False))  # Все слова
+    print(finder2.get_all_words(True))  # Все слова
     print(finder2.find('TEXT'))  # 3 слово по счёту
     print(finder2.count('teXT'), end='\n\n')  # 4 слова teXT в тексте всего
 
