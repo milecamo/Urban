@@ -43,7 +43,7 @@ class WordsFinder:
         self.__file_words = new_file_words
 
     def get_all_words(self, alternative=None):
-        start_time = 0
+        execution_time = 0
         all_words = {}
         for file_name in self.file_names:
             file_data = None
@@ -70,17 +70,17 @@ class WordsFinder:
                 for chr in punct_marks:
                     file_data = file_data.replace(chr, '\r')
                 all_words[file_name] = file_data.split()
+            execution_time += time.time() - start_time
         if alternative != None:
-            end_time = time.time()
-            old_execution_time = self.__execution_time
-            self.__execution_time = (end_time - start_time) * 1000
-            print(f"Время выполнения: {round(self.__execution_time, 4)} мс. alternative is {alternative}")
-            if old_execution_time:
-                dif = old_execution_time / self.__execution_time
+            new_execution_time = execution_time * 1000
+            print(f"Время выполнения: {round(new_execution_time, 4)} мс. alternative is {alternative}")
+            if self.__execution_time:
+                dif = self.__execution_time / new_execution_time
                 if dif > 1:
                     print(f"Время выполнения лучше в {round(dif, 2)} раз")
                 else:
                     print(f"Время выполнения хуже в {round(1 / dif, 2)} раз")
+            self.__execution_time = new_execution_time
         else:
             self.__execution_time = 0
         return all_words
