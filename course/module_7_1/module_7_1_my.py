@@ -38,7 +38,7 @@ class Shop:
         products_base = []
         for product_string in products_strings:
             if product_string:
-                product_data = product_string.split(', ')
+                product_data = product_string.split(',')
                 products_base.append(Product(product_data[0], float(product_data[1]), product_data[2]))
                 # products_base.append(product_data[0])
 
@@ -53,7 +53,7 @@ class Shop:
                     products_base.append(product)
         file = open(self.__file_name, 'w')
         for product in products_base:
-            file.write(f'{product}\n')
+            file.write(f'{str(product).replace(' ', '')}\n')
         file.close()
 
         # file = open(self.__file_name, 'a')
@@ -62,7 +62,7 @@ class Shop:
         #         if product in products_base:
         #             print(f'Продукт {product.name} уже есть в магазине')
         #         else:
-        #             file.write(f'{product}\n')
+        #             file.write(f'{str(product).replace(' ', '')}\n')
         # file.close()
 
 
