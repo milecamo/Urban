@@ -25,18 +25,17 @@ class Shop:
         self.__file_is_read = False
 
     def get_products(self):
-        file_data = ''
         if not self.__file_is_read:
             if os.path.exists(self.__file_name) and os.path.isfile(self.__file_name):
                 file = open(self.__file_name)
                 file_data = file.read()
                 file.close()
+                for product_string in file_data.split('\n'):
+                    if product_string:
+                        product_data = product_string.split(',')
+                        product = Product(product_data[0], float(product_data[1]), product_data[2])
+                        self.__products_base.append(product)
             self.__file_is_read = True
-        for product_string in file_data.split('\n'):
-            if product_string:
-                product_data = product_string.split(',')
-                product = Product(product_data[0], float(product_data[1]), product_data[2])
-                self.__products_base.append(product)
         products = ''
         for product in self.__products_base:
             products += f'{product}\n'
