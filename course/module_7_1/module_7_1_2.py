@@ -25,6 +25,11 @@ class Shop:
         self.__file_name = 'products.txt'
         self.__products_base = []
         self.__file_is_read = False
+        self.__products = ''
+
+    def __append(self, product: Product):
+        self.__products_base.append(product)
+        self.__products += f'{product}\n'
 
     def get_products(self):
         if not self.__file_is_read:
@@ -36,12 +41,9 @@ class Shop:
                     if product_string:
                         product_data = product_string.split(',')
                         product = Product(product_data[0], float(product_data[1]), product_data[2])
-                        self.__products_base.append(product)
+                        self.__append(product)
             self.__file_is_read = True
-        products = ''
-        for product in self.__products_base:
-            products += f'{product}\n'
-        return products
+        return self.__products
 
     def add(self, *products):
         self.get_products()
@@ -50,7 +52,7 @@ class Shop:
                 if product in self.__products_base:
                     print(f'Продукт {product.name} уже есть в магазине')
                 else:
-                    self.__products_base.append(product)
+                    self.__append(product)
                     file = open(self.__file_name, 'a')
                     file.write(str(product).replace(' ', '') + '\n')
                     file.close()
