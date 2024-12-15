@@ -15,7 +15,10 @@ class Product:
     def __eq__(self, other):
         if isinstance(other, Product):
             # по условиям задачи проверку наличия продукта в файле нужно делать по названию
-            return self.name == other.name  # and self.weight == other.weight and self.category == other.category
+            return self.name == other.name
+            # return (self.name == other.name and
+            #         self.weight == other.weight and
+            #         self.category == other.category)
         return NotImplemented
 
 
@@ -39,8 +42,7 @@ class Shop:
                 for product_string in file_data.split('\n'):
                     if product_string:
                         product_data = product_string.split(',')
-                        product = Product(product_data[0], float(product_data[1]), product_data[2])
-                        self.__append(product)
+                        self.__append(Product(product_data[0], float(product_data[1]), product_data[2]))
             self.__file_is_read = True
         return self.__products
 
