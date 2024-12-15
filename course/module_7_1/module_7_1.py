@@ -35,13 +35,15 @@ class Shop:
                 # И проверка на продукты с одинаковым названием в переданных products не делается.
 
                 # Правильно конечно и проще использовать результат Shop.get_products()
-                # при добавлении каждого продукта.
+                # при добавлении каждого продукта, если файл не очень большой.
                 product_exist = False
                 for product_string in self.get_products().split('\n'):
                     # По условиям задачи проверку наличия продукта в файле
                     # нужно делать по названию.
-                    if product_string.split(', ')[0] == product.name:
+                    # if product.name == product_string.split(',')[0]:
+                    if product.name == product_string.split(', ')[0]:
                         product_exist = True
+                        break
                 if product_exist:
                     print(f'Продукт {product.name} уже есть в магазине')
                 else:
