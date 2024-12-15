@@ -22,7 +22,8 @@ class WordsFinder:
         word_positions = {}
         low_word = word.lower()
         for file_name, file_words in self.get_all_words().items():
-            word_positions[file_name] = file_words.index(low_word) + 1
+            if low_word in file_words:
+                word_positions[file_name] = file_words.index(low_word) + 1
         return word_positions
 
     def count(self, word):
