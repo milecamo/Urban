@@ -61,7 +61,7 @@ class Shop:
                     self.__append(product)
                     # self.__reset()
                     file = open(self.__file_name, 'a')
-                    file.write(str(product).replace(' ', '') + '\n')
+                    file.write(str(product).replace(', ', ',') + '\n')
                     file.close()
 
 
