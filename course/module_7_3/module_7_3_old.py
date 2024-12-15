@@ -46,7 +46,7 @@ class WordsFinder:
         execution_time = 0
         all_words = {}
         for file_name in self.file_names:
-            file_data = None
+            file_data = ''
             with open(file_name, encoding='utf-8') as file:
                 file_data = file.read().lower()
             punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
@@ -89,7 +89,8 @@ class WordsFinder:
         word_positions = {}
         low_word = word.lower()
         for file_name, file_words in self.get_all_words(alternative).items():
-            word_positions[file_name] = file_words.index(low_word) + 1
+            if low_word in file_words:
+                word_positions[file_name] = file_words.index(low_word) + 1
         return word_positions
 
     def count(self, word, alternative=None):
