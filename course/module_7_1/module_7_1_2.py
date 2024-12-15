@@ -53,8 +53,7 @@ class Shop:
                 if product in self.__products_base:
                     print(f'Продукт {product.name} уже есть в магазине')
                 else:
-                    self.__append(product)
-                    # self.__products += f'{product}\n'
+                    self.__append(product) # self.__products += f'{product}\n'
                     file = open(self.__file_name, 'a')
                     file.write(str(product).replace(' ', '') + '\n')
                     file.close()
