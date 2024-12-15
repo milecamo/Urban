@@ -33,8 +33,13 @@ class Shop:
         self.__products_base.append(product)
         self.__products += f'{product}\n'
 
+    def __reset(self):
+        self.__file_is_read = False
+        self.__products = ''
+
     def get_products(self):
         if not self.__file_is_read:
+            self.__products_base = []
             if os.path.exists(self.__file_name) and os.path.isfile(self.__file_name):
                 file = open(self.__file_name)
                 file_data = file.read()
@@ -53,7 +58,8 @@ class Shop:
                 if product in self.__products_base:
                     print(f'Продукт {product.name} уже есть в магазине')
                 else:
-                    self.__append(product) # self.__products += f'{product}\n'
+                    self.__append(product)
+                    # self.__reset()
                     file = open(self.__file_name, 'a')
                     file.write(str(product).replace(' ', '') + '\n')
                     file.close()
