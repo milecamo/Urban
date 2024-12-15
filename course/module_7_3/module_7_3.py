@@ -8,7 +8,7 @@ class WordsFinder:
     def get_all_words(self):
         all_words = {}
         for file_name in self.file_names:
-            file_data = None
+            file_data = ''
             with open(file_name, encoding='utf-8') as file:
                 file_data = file.read().lower()
             punct_marks = [',', '.', '=', '!', '?', ';', ':', ' - ']
