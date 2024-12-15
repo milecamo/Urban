@@ -1,5 +1,8 @@
 # Задача "Учёт товаров"
 
+import os
+
+
 class Product:
     def __init__(self, name: str, weight: float, category: str):
         self.name = name
@@ -7,12 +10,8 @@ class Product:
         self.category = category
 
     def __str__(self):
+        # по условию задачи здесь должны быть пробелы после запятой
         return f'{self.name}, {self.weight}, {self.category}'
-
-    def __eq__(self, other):
-        if isinstance(other, str):
-            return self.name == other
-        return NotImplemented
 
 
 class Shop:
@@ -20,29 +19,40 @@ class Shop:
         self.__file_name = 'products.txt'
 
     def get_products(self):
-        file = open(self.__file_name, 'a')
-        file.close()
-        file = open(self.__file_name)
-        file_data = file.read()
-        file.close()
+        file_data = ''
+        if os.path.exists(self.__file_name) and os.path.isfile(self.__file_name):
+            file = open(self.__file_name)
+            file_data = file.read()
+            file.close()
         return file_data
 
     def add(self, *products):
-        file_data = self.get_products()
-        products_strings = file_data.split('\n')
-        products_base = []
-        for product_string in products_strings:
-            if product_string:
-                product_data = product_string.split(', ')
-                products_base.append(product_data[0])
-        file = open(self.__file_name, 'a')
         for product in products:
             if isinstance(product, Product):
-                if product in products_base:
+                # В примере приведен неправильный вывод Shop.get_products(),
+                # словно в Shop.add() они используют результат Shop.get_products(),
+                # запущенного один раз, перед добавлением всех products.
+                # И проверка на продукты с одинаковым названием в переданных products не делается
+
+                # Правильно конечно и проще использовать результат Shop.get_products()
+                # при добавлении каждого продукта
+                product_exist = False
+                for product_string in self.get_products().split('\n'):
+                    # по условиям задачи проверку наличия продукта в файле
+                    # нужно делать по названию
+                    if product_string.split(', ')[0] == product.name:
+                        product_exist = True
+                if product_exist:
                     print(f'Продукт {product.name} уже есть в магазине')
                 else:
+                    file = open(self.__file_name, 'a')
+                    # В примере скриншота файла в условиях задачи
+                    # все данные в строке разделены запятой с пробелами.
+                    # И в примере вывода на консоль результата Shop.get_products()
+                    # все данные в строке тоже разделены запятой с пробелами.
                     file.write(f'{product}\n')
-        file.close()
+                    # file.write(f'{str(product).replace(', ', ',')}\n')
+                    file.close()
 
 
 s1 = Shop()
