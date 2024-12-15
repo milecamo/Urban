@@ -14,9 +14,8 @@ class Product:
 
     def __eq__(self, other):
         if isinstance(other, Product):
-            return (self.name == other.name and
-                    self.weight == other.weight and
-                    self.category == other.category)
+            # по условиям задачи проверку наличия продукта в файле нужно делать по названию
+            return self.name == other.name  # and self.weight == other.weight and self.category == other.category
         return NotImplemented
 
 
