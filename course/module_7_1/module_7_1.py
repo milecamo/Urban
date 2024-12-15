@@ -40,7 +40,6 @@ class Shop:
                 for product_string in self.get_products().split('\n'):
                     # По условиям задачи проверку наличия продукта в файле
                     # нужно делать по названию.
-                    # if product.name == product_string.split(',')[0]:
                     if product.name == product_string.split(', ')[0]:
                         product_exist = True
                         break
@@ -53,7 +52,6 @@ class Shop:
                     # И в примере вывода на консоль результата Shop.get_products()
                     # все данные в строке тоже разделены запятой с пробелами.
                     file.write(f'{product}\n')
-                    # file.write(f'{str(product).replace(', ', ',')}\n')
                     file.close()
 
 
