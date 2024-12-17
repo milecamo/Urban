@@ -40,7 +40,7 @@ class Shop:
                 for product_string in self.get_products().split('\n'):
                     # По условиям задачи проверку наличия продукта в файле
                     # нужно делать по названию.
-                    if product.name == product_string.split(', ')[0]:
+                    if product_string and product.name == product_string[0:product_string.index(',')]:
                         product_exist = True
                         break
                 if product_exist:
