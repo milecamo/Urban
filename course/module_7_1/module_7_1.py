@@ -37,12 +37,14 @@ class Shop:
                 # Правильно конечно и проще использовать результат Shop.get_products()
                 # при добавлении каждого продукта, если файл не очень большой.
                 product_exist = False
-                for product_string in self.get_products().split('\n'):
-                    # По условиям задачи проверку наличия продукта в файле
-                    # нужно делать по названию.
-                    if product_string and product.name == product_string[0:product_string.index(',')]:
-                        product_exist = True
-                        break
+                file_data = self.get_products()
+                if file_data:
+                    for product_string in file_data.split('\n'):
+                        # По условиям задачи проверку наличия продукта в файле
+                        # нужно делать по названию.
+                        if product.name == product_string[0:product_string.find(',')]:
+                            product_exist = True
+                            break
                 if product_exist:
                     print(f'Продукт {product.name} уже есть в магазине')
                 else:
