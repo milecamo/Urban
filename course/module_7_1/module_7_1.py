@@ -42,7 +42,7 @@ class Shop:
                     for product_string in file_data.split('\n'):
                         # По условиям задачи проверку наличия продукта в файле
                         # нужно делать по названию.
-                        if product.name == product_string.split(', ')[0]:
+                        if product.name == product_string[0:product_string.find(',')]:
                             product_exist = True
                             print(f'Продукт {product.name} уже есть в магазине')
                             break
