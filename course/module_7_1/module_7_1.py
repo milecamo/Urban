@@ -44,10 +44,9 @@ class Shop:
                         # нужно делать по названию.
                         if product.name == product_string[0:product_string.find(',')]:
                             product_exist = True
+                            print(f'Продукт {product.name} уже есть в магазине')
                             break
-                if product_exist:
-                    print(f'Продукт {product.name} уже есть в магазине')
-                else:
+                if not product_exist:
                     file = open(self.__file_name, 'a')
                     # В примере скриншота файла в условиях задачи
                     # все данные в строке разделены запятой с пробелами.
