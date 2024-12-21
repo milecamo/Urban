@@ -19,11 +19,11 @@ os.path.normpath(path)
 os.path.getsize(path)
 
 # Получить дату модификации файла.
-os.path.getmtime(path)
+secs = os.path.getmtime(path)
 
 # вернет кол-во секунд с начала эпохи. преобразовать в года/месяца можно так
 import time
-time.gmtime(secs)  # вернет тьюпл со временем https://docs.python.org/3/library/time.html#time.struct_time
+print(time.gmtime(secs))  # вернет тьюпл со временем https://docs.python.org/3/library/time.html#time.struct_time
 
 # сформирвать правильный путь к файлу с учетом особенностей ОС.
 # os.path.join(path1[, path2[, ...]])

@@ -100,7 +100,7 @@ f1()
 
 file_name = 'out.txt'
 var_1 = 42
-with open(file_name, mode='w') as file:
+with open(file_name, mode='w', encoding='utf8') as file:
     file.write('Вывод числа %d' % (34, ))
     file.write('\n')
     file.write('Мы — те {}, что говорят "{}!"'.format('рыцари', 'Ха'))
