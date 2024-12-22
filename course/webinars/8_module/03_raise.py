@@ -24,10 +24,10 @@ def greet_person(person_name):
     """
     says hello
     """
-    if person_name == 'Robert':
+    # if person_name == 'Robert':
         # можно указать только класс исключения,
         # тогда автоматически создастся обьект исключения без параметров
-        raise BaseException
+        # raise BaseException
     print(f'Hi there {person_name}')
 
 
@@ -47,7 +47,7 @@ try:
 except NameError as exc:
     print(f'Исключение типа {type(exc)} пролетело мимо! его параметры {exc.args}')
     # обратите внимание на "пустой" оператор - будет переброшено исключение текущего скоупа.
-    raise
+    # raise
 # используется для зачистки возможно порушенных данных и/или логирования ошибки
 # и передачи отвественности вовне - пусть там решают что делать дальше
 
@@ -56,7 +56,7 @@ try:
     raise NameError('Привет Там')
 except NameError as exc:
     print(f'Поймано исключение типа {type(exc)}')
-    raise TypeError('Привет и тут')
+    # raise TypeError('Привет и тут')
 # автоматом прицепляется обьект породившего исключения, в атрбибут __cause__
 
 # можно явно указать
@@ -64,7 +64,7 @@ try:
     raise NameError('Привет Там')
 except NameError as exc:
     print(f'Поймано исключение типа {type(exc)}')
-    raise TypeError('Привет и тут') from exc
+    # raise TypeError('Привет и тут') from exc
 
 
 ##################
@@ -82,7 +82,7 @@ try:
     raise HeroDiedError('Рядовой Райан')
 except HeroDiedError as exc:
     print(f'Поймано исключение {exc}')
-    raise GameOverError('Миссия провалена')
+    # raise GameOverError('Миссия провалена')
 # первый параметр, как говорилось, сообщение на консоль,
 # остальные параметры можно использовать для уточнения самой ошибки
 # (входные данные, которые к ней привели, к примеру)
