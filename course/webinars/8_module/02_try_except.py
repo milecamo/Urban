@@ -121,7 +121,7 @@ def f2():
 
 try:
     f2()
-except ZeroDivisionError as exc:
+except Exception as exc:
     print(f'внутри f2 что-то пошло не так: {exc}, но мы устояли')
 
 
@@ -145,6 +145,7 @@ finally:
 
 
 # обобщенный пример
+f = None
 try:
     # тут мы пишем код, как буд-то ошибок не будет... наивные...
     f = open('myfile.txt')
@@ -160,14 +161,15 @@ except Exception as exc:
 else:
     print('прочитано i=', i)
 finally:
-    f.close()
+    if f:
+        f.close()
 
 
 # Кстати в методе __exit__ для контекстного менеджера параметры отвечают за исключения
 
-with open('myfile.txt') as ff:
-    first_line = ff.readline()
-print(first_line)
+# with open('myfile.txt') as ff:
+#     first_line = ff.readline()
+#     print(first_line)
 
 
 class InOutBlock:
