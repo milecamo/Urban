@@ -19,6 +19,6 @@ except TypeError as exc:
     print(type(exc), exc)
 
 try:
-    print(add_everything_up(123.456, 7))
+    print(f"{add_everything_up(123.456, 7):.3f}")
 except TypeError as exc:
     print(type(exc), exc)
