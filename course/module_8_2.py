@@ -19,8 +19,9 @@ def calculate_average(numbers):
         print('В numbers записан некорректный тип данных')
         return None
     sum, incorrect_data = personal_sum(numbers)
-    if len(numbers) - incorrect_data > 0:
-        return sum / (len(numbers) - incorrect_data)
+    correct_data = len(numbers) - incorrect_data
+    if correct_data > 0:
+        return sum / correct_data
     else:
         return 0
 
