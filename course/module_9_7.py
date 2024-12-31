@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # Задание по теме "Декораторы"
-from future.utils import raise_
+
 from sympy import isprime
 
 
@@ -17,12 +17,8 @@ def is_prime(func):
 
 
 @is_prime
-def sum_three(*args):
-    if len(args) != 3:
-        raise TypeError(f"sum_three() takes 3 positional arguments but {len(args)} were given")
-    if not all(isinstance(i, (int, float)) for i in args):
-        raise TypeError(f"unsupported argument for sum_three(): not 'int' or 'float'")
-    return sum(args[:3])
+def sum_three(a, b, c):
+    return a + b + c
 
 
 result = sum_three(2, 3, 6)
