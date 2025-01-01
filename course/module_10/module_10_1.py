@@ -2,9 +2,7 @@
 # Задача "Потоковая запись в файлы"
 
 from threading import Thread
-from time import sleep
-from time import strftime
-from time import time
+from time import sleep, time
 
 
 def wite_words(word_count, file_name):
