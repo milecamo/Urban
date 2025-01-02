@@ -3,6 +3,7 @@
 
 from threading import Thread
 from time import sleep, time
+from datetime import timedelta
 
 
 def wite_words(word_count, file_name):
@@ -18,7 +19,7 @@ wite_words(10, "example1.txt")
 wite_words(30, "example2.txt")
 wite_words(200, "example3.txt")
 wite_words(100, "example4.txt")
-print(f"Работа функций {time() - time_start}")
+print(f"Работа функций {timedelta(seconds=time() - time_start)}")
 
 thread1 = Thread(target=wite_words, args=(10, "example5.txt"))
 thread2 = Thread(target=wite_words, args=(30, "example6.txt"))
@@ -31,4 +32,4 @@ for thread in threads:
     thread.start()
 for thread in threads:
     thread.join()
-print(f"Работа потоков {time() - time_start}")
+print(f"Работа потоков {timedelta(seconds=time() - time_start)}")
