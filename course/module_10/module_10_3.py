@@ -15,9 +15,9 @@ class Bank:
         for i in range(0, 100):
             refill = randint(50, 500)
             self.balance += refill
+            print(f"Пополнение: {refill}. Баланс: {self.balance}\n", end="")
             if self.balance >= 500 and self.lock.locked():
                 self.lock.release()
-            print(f"Пополнение: {refill}. Баланс: {self.balance}\n", end="")
             sleep(0.001)
 
     def take(self):
@@ -31,6 +31,7 @@ class Bank:
                 print("Запрос отклонён, недостаточно средств\n", end="")
                 self.lock.acquire()
             sleep(0.001)
+
 
 bk = Bank()
 
