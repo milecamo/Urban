@@ -3,7 +3,7 @@
 
 from threading import Thread
 from time import sleep
-import datetime
+from datetime import datetime
 
 
 def wite_words(word_count, file_name):
@@ -14,12 +14,12 @@ def wite_words(word_count, file_name):
     print(f"Завершилась запись в файл {file_name}")
 
 
-time_start = datetime.datetime.now()
+time_start = datetime.now()
 wite_words(10, "example1.txt")
 wite_words(30, "example2.txt")
 wite_words(200, "example3.txt")
 wite_words(100, "example4.txt")
-print(f"Работа функций {datetime.datetime.now() - time_start}")
+print(f"Работа функций {datetime.now() - time_start}")
 
 thread1 = Thread(target=wite_words, args=(10, "example5.txt"))
 thread2 = Thread(target=wite_words, args=(30, "example6.txt"))
@@ -27,9 +27,9 @@ thread3 = Thread(target=wite_words, args=(200, "example7.txt"))
 thread4 = Thread(target=wite_words, args=(100, "example8.txt"))
 threads = [thread1, thread2, thread3, thread4]
 
-time_start = datetime.datetime.now()
+time_start = datetime.now()
 for thread in threads:
     thread.start()
 for thread in threads:
     thread.join()
-print(f"Работа потоков {datetime.datetime.now() - time_start}")
+print(f"Работа потоков {datetime.now() - time_start}")
