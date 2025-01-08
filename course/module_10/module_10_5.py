@@ -25,7 +25,6 @@ if __name__ == '__main__':
 
     # Многопроцессный 0:00:08.392741 (многопроцессный)
     time_start = datetime.now()
-    for filename in filenames:
-        with Pool(4) as p:
-            p.map(read_info, filenames)
+    with Pool(4) as p:
+        p.map(read_info, filenames)
     print(f'{datetime.now() - time_start} (многопроцессный)\n', end='')
