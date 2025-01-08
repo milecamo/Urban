@@ -17,13 +17,13 @@ def read_info(name):
 if __name__ == '__main__':
     filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
-    # Линейный вызов 0:00:05.078704 (линейный)
+    # Линейный вызов 0:00:04.988363 (линейный)
     linecall_start = datetime.now()
     for filename in filenames:
         read_info(filename)
     print(f'{datetime.now() - linecall_start} (линейный)\n', end='')
 
-    # Многопроцессный 0:00:08.392741 (многопроцессный)
+    # Многопроцессный 0:00:02.289052 (многопроцессный)
     time_start = datetime.now()
     with Pool(4) as p:
         p.map(read_info, filenames)
