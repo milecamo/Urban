@@ -18,13 +18,13 @@ if __name__ == '__main__':
     filenames = [f'./file {number}.txt' for number in range(1, 5)]
 
     # Линейный вызов 0:00:04.988363 (линейный)
-    linecall_start = datetime.now()
+    start_time = datetime.now()
     for filename in filenames:
         read_info(filename)
-    print(f'{datetime.now() - linecall_start} (линейный)\n', end='')
+    print(f'{datetime.now() - start_time} (линейный)\n', end='')
 
     # Многопроцессный 0:00:02.289052 (многопроцессный)
-    time_start = datetime.now()
+    start_time = datetime.now()
     with Pool(4) as p:
         p.map(read_info, filenames)
-    print(f'{datetime.now() - time_start} (многопроцессный)\n', end='')
+    print(f'{datetime.now() - start_time} (многопроцессный)\n', end='')
